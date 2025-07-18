@@ -1,8 +1,12 @@
 from huggingface_hub import InferenceClient
 import keys 
-model_id = "mistralai/Mistral-7B-Instruct-v0.2"
-client = InferenceClient(model=model_id, provider="featherless-ai",
+model_id = "mistralai/Mistral-7B-Instruct-v0.3"
+client = InferenceClient(model=model_id, 
                          token=keys.HUGGINGFACE_KEY)
 
-response = client.text_generation("What is the capital of France?")
-print(response)
+messages = [
+    {"role": "user", "content": "What is the capital of France?"}
+]
+
+response = client.chat_completion(messages)
+print(response.choices[0].message.content)

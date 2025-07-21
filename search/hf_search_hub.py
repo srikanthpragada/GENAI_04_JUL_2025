@@ -23,7 +23,7 @@ documents = [
 vectorstore = FAISS.from_documents(documents, embeddings_model)
 
 # 4. Perform a similarity search
-query = "Srikanth"
+query = "Bill Gates"
 results = vectorstore.similarity_search(query, k=2)  # Get the top 2 results
 
 # 5. Print the results
